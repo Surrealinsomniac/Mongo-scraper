@@ -80,12 +80,17 @@ app.post("/article/:id", function(req, res) {
 
 app.delete("/article/:article_id/comment/:comment_id", function(req, res) {
     db.Comment.findOneAndRemove({ _id: req.params.comment_id }, function (err) {
-        if (err) throw err;
+        if (err) {
+            console.log(err);
+        } else { 
         db.Article.findOneAndUpdate({ _id: req.params.article_id }, { $pull: {comment: req.params.comment_id }})
         .then(function(err) {
-            if (err) throw err;
+            if (err) {
+                console.log(err);
+            }
             res.send("note deleted")
         })
+    }
     })
 })
 
