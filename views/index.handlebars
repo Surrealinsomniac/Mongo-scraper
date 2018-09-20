@@ -1,0 +1,27 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+    <div class="col-md-10">
+        {{#if articles}}
+            {{#each articles}}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title title" data-id={{this._id}}>{{this.title}}</h4>
+                    <p class="card-subtitle">{{this.summary}}</p>
+                    <a href={{this.link}} target="_blank">{{this.link}}</a>
+                    <br>
+                    <a class="btn btn-primary btn-lg" id="comment" href="/article/{{this._id}}">comment on this</a>
+                </div>
+            </div>
+            {{/each}}
+        {{else}}
+         <div class="card">
+            <div class="card-body">
+            <h4>Uh Oh. Looks like we don't have any new articles.</h4>
+            </div>
+         </div>
+        {{/if}}
+
+    </div>
+    </div>
+</div>
