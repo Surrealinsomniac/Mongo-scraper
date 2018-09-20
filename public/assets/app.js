@@ -27,3 +27,15 @@ $("#submitbtn").on("click", function(event) {
         location.reload();
     })
 })
+
+$("#delete").on("click", function() {
+    let comment_id = $(".comment").attr("data-id");
+    let article_id = $(".title").attr("data-id")
+    $.ajax({
+        method: "DELETE",
+        url: "/article/" + article_id + "/comment/" + comment_id
+    }).then(function(data) {
+        console.log(data);
+        location.reload();
+    })
+})

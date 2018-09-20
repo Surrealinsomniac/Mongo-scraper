@@ -76,6 +76,17 @@ app.post("/article/:id", function(req, res) {
     .then(function(dbArticle) {
         res.send(dbArticle);
     })
+});
+
+app.delete("/article/:article_id/comment/:comment_id", function(req, res) {
+    db.Comment.findOneAndRemove({ _id: req.params.comment_id }, function (err) {
+        if (err) throw err;
+        db.Article.findOneAndUpdate({ _id: req.params.article_id }, { $pull: {comment: req.params.comment_id }})
+        .then(function(err) {
+            if (err) throw err;
+            res.send("note deleted")
+        })
+    })
 })
 
 

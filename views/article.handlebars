@@ -24,10 +24,11 @@
     <div class="col-md-10">
         {{#if articles.comment}}
             {{#each articles.comment}}
-            <div class="card">
+            <div class="card comment" data-id={{this._id}}>
                 <div class="card-body">
                     <h4 class="card-title">{{this.title}}</h4>
                     <p class="card-subtitle">{{this.body}}</p>
+                    <a class="btn btn-primary btn-lg" id="delete" role="delete">delete comment</a>
                 </div>
             </div>
             {{/each}}
